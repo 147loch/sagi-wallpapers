@@ -1,0 +1,140 @@
+body {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  background: transparent;
+  line-height: 1;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  user-select: none;
+
+  * {
+    font-family: 'Open Sans', 'Roboto', sans-serif;
+  }
+}
+
+.app {
+  bottom: 0;
+  contain: layout;
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-rendering: optimizeLegibility;
+  top: 0;
+}
+
+.hidden {
+  display: none !important;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.title {
+  font-size: 26px;
+  line-height: 32px;
+  font-family: 'Montserrat', 'Roboto', 'Open Sans', sans-serif;
+}
+
+.subtitle {
+  color: $text-color-subtitle;
+  font-size: 18px;
+  line-height: 22px;
+  font-family: 'Montserrat', 'Roboto', 'Open Sans', sans-serif;
+}
+
+.size {
+  &-mini {
+    font-size: 15px;
+    font-family: 'Open Sans', 'Roboto', sans-serif;
+  }
+}
+
+.weight {
+  &-light {
+    font-weight: 300;
+  }
+
+  &-normal {
+    font-weight: 400;
+  }
+}
+
+.color {
+  &-white {
+    color: $text-color-title;
+  }
+}
+
+.margin {
+  &-bottom {
+    &-8 {
+      margin-bottom: 8px;
+    }
+  }
+}
+
+hr {
+  opacity: 0.2;
+  margin: 20px 0 10px 0;
+}
+
+.button {
+  -moz-user-select: none;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  -ms-user-select: none;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  -webkit-box-sizing: border-box;
+  -webkit-user-select: none;
+  align-items: center;
+  background: none;
+  border: none;
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 14px;
+  font-weight: 500;
+  justify-content: center;
+  line-height: 16px;
+  padding: 2px 16px;
+  position: relative;
+  user-select: none;
+  cursor: pointer;
+
+  &.grow {
+    width: auto !important;
+  }
+
+  &.look-filled, &.look-inverted {
+    -webkit-transition: background-color .17s ease,color .17s ease;
+    transition: background-color .17s ease,color .17s ease;
+
+    &.color-brand {
+      background-color: #0973BA;
+      color: #fff;
+
+      &:hover {
+        background-color: #064067;
+      }
+    }
+
+    .contents {
+      margin: 0 auto;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  &.size-small {
+    height: 32px;
+    min-height: 32px;
+    min-width: 60px;
+    width: 60px;
+  }
+
+
+}

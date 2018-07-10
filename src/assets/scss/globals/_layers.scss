@@ -1,0 +1,44 @@
+.app-dark .layer,
+.app-dark .layers {
+  background: $app-dark-background-color;
+}
+
+.layers > .layer {
+  contain: layout;
+  overflow: hidden;
+}
+
+.layers {
+  position: relative;
+}
+
+.process-windows .layer {
+  padding-top: 22px;
+  top: -22px;
+}
+
+.layers > .layer {
+  -ms-flex-direction: column;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.layer-animate {
+  -webkit-transition: all 200ms ease-in-out;
+          transition: all 200ms ease-in-out;
+
+  &.fadescale-out {
+    opacity: 0;
+    -webkit-transform: scale(0.93) translateZ(0px);
+    transform: scale(0.93) translateZ(0px);
+  }
+}

@@ -1,0 +1,73 @@
+.wrapper {
+  background: -webkit-gradient(linear,right top,left bottom,from(#3d4046),to(#1e1e23));
+  background: linear-gradient(to left bottom,#3d4046,#1e1e23);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+
+  &-right-split {
+    -webkit-transition: opacity .4s ease;
+    bottom: 0;
+    opacity: 1;
+    pointer-events: none;
+    position: fixed;
+    right: 0;
+    transition: opacity .4s ease;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-left-split {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &-centering {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+@media (min-width: 486px) {
+  .wrapper {
+    background: $app-dark-background-color;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1;
+
+    &-left-split {
+      -ms-flex-align: center;
+      -ms-flex-pack: center;
+      -webkit-box-align: center;
+      -webkit-box-pack: center;
+      align-items: center;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      // max-height: 1000px;
+      // max-width: 1080px;
+      // min-height: 650px;
+      overflow: hidden;
+      width: 100%;
+    }
+  }
+}
+
+.process-windows .splash-background::before {
+  -webkit-transition: background .4s ease .4s;
+  background: rgba(0,0,0,.3);
+  border-bottom-left-radius: 3px;
+  content: "";
+  height: 22px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: background .4s ease .4s;
+  width: 84px;
+  z-index: 1;
+}

@@ -1,0 +1,52 @@
+body:not(.process-windows) .titlebar {
+  display: none;
+}
+
+.titlebar {
+  &-windows {
+    height: 18px;
+    margin-top: 4px;
+  }
+  &-win {
+    &-button {
+      -webkit-app-region: no-drag;
+      cursor: pointer;
+      height: 22px;
+      opacity: .6;
+      pointer-events: auto;
+      position: relative;
+      top: -4px;
+      width: 28px;
+
+      &:hover {
+        opacity: 1;
+      }
+      &-close:hover {
+        background-color: $titlebar-win-close-hover;
+      }
+      &-max:hover {
+        background-color: hsla(0,0%,100%,.05);
+      }
+      &-min:hover {
+        background-color: hsla(0,0%,100%,.05);
+      }
+    }
+  }
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+  z-index: 3001;
+}
+.wordmark {
+  font-size: 0;
+  left: 0;
+  opacity: .6;
+  padding: 4px 8px 3px;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+
+  &-image {
+    margin-top: -1.5px;
+    height: 16px;
+  }
+}
