@@ -1,7 +1,7 @@
 {
   "name": "sagi-wallpapers",
   "productName": "Sagittarius Eye Wallpapers",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Converts screenshots from Elite Dangerous to snazzy Wallpapers for Sagittarius Eye's Patrons.",
   "main": "src/index.js",
   "scripts": {
@@ -21,7 +21,8 @@
           "squirrel"
         ],
         "darwin": [
-          "zip"
+          "zip",
+          "dmg"
         ],
         "linux": [
           "deb",
