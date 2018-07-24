@@ -14,10 +14,16 @@
         <div class="wordmark">
           <img src="../assets/img/full_logo_white.svg" alt="SAGi Logo" class="wordmark-image">
         </div>
-        <div class="titlebar-win-button-close titlebar-win-button flex flex-justify-center flex-align-center"><svg name="TitleBarClose" width="12" height="12" viewBox="0 0 12 12"><polygon fill="#ffffff" fill-rule="evenodd" points="11 1.576 6.583 6 11 10.424 10.424 11 6 6.583 1.576 11 1 10.424 5.417 6 1 1.576 1.576 1 6 5.417 10.424 1"></polygon></svg></div>
+        <div class="titlebar-win-button-close titlebar-win-button flex flex-justify-center flex-align-center">
+          <svg name="TitleBarClose" width="12" height="12" viewbox="0 0 12 12">
+            <polygon fill="#ffffff" fill-rule="evenodd" points="11 1.576 6.583 6 11 10.424 10.424 11 6 6.583 1.576 11 1 10.424 5.417 6 1 1.576 1.576 1 6 5.417 10.424 1"></polygon>
+          </svg>
+        </div>
         <div class="titlebar-win-button-max titlebar-win-button flex flex-justify-center flex-align-center">
-          <svg name="TitleBarMaximize" width="12" height="12" viewBox="0 0 12 12"><rect width="9" height="9" x="1.5" y="1.5" fill="none" stroke="#ffffff"></rect></svg>
-          <svg name="TitleBarUnmaximize" class="hidden" width="12" height="12" viewBox="0 0 12 12">
+          <svg name="TitleBarMaximize" width="12" height="12" viewbox="0 0 12 12">
+            <rect width="9" height="9" x="1.5" y="1.5" fill="none" stroke="#ffffff"></rect>
+          </svg>
+          <svg name="TitleBarUnmaximize" class="hidden" width="12" height="12" viewbox="0 0 12 12">
             <mask id="Mask">
               <rect fill="#ffffff" width="12" height="12"></rect>
               <path fill="#000000" d="M 3 1 L 9 1 L 9 7 L 8 7 L 8 2 L 3 2 L 3 1 z"/>
@@ -26,13 +32,17 @@
             <path fill="#ffffff" d="M 2 0 L 10 0 L 10 8 L 8 8 L 8 10 L 0 10 L 0 2 L 2 2 L 2 0 z" mask="url(#Mask)"/>
           </svg>
         </div>
-        <div class="titlebar-win-button-min titlebar-win-button flex flex-justify-center flex-align-center"><svg name="TitleBarMinimize" width="12" height="12" viewBox="0 0 12 12"><rect fill="#ffffff" width="10" height="1" x="1" y="6"></rect></svg></div>
+        <div class="titlebar-win-button-min titlebar-win-button flex flex-justify-center flex-align-center">
+          <svg name="TitleBarMinimize" width="12" height="12" viewbox="0 0 12 12">
+            <rect fill="#ffffff" width="10" height="1" x="1" y="6"></rect>
+          </svg>
+        </div>
       </div>
 
       <div class="flex-app">
         <div class="app flex-vertical app-dark">
-          <div class="wrapper scrollbar scrollbar-ghost splash-background layer-animate" data-frame="homepage">
           <!-- <div class="wrapper scrollbar scrollbar-ghost splash-background layer-animate hidden" data-frame="homepage"> -->
+          <div class="wrapper scrollbar scrollbar-ghost splash-background layer-animate" data-frame="homepage">
             <div class="home image image-loaded image-full-width wrapper-right-split">
               <!-- <img class="" src="../assets/img/home_file_upload_background.png"> -->
             </div>
@@ -46,14 +56,8 @@
                     <div class="subtitle weight-normal">
                       Drag & drop a screenshot to begin.
                     </div>
-                    <!-- <div data-if="local-picture">
-                      <hr>
-                      <div class="size-mini weight-light">
-                        It looks like you already have a picture in the works.<br>
-                        The app may have crashed, in which case you will have to redo the cropping process.<br>
-                        <button type="button" class="button look-filled color-brand size-small grow" name="appInit" onclick="startApp()"><div class="contents">Load the Previous Picture</div></button>
-                      </div>
-                    </div> -->
+                    <!-- <div data-if="local-picture"> <hr> <div class="size-mini weight-light"> It looks like you already have a picture in the works.<br> The app may have crashed, in which case you will have to redo the cropping process.<br> <button type="button"
+                    class="button look-filled color-brand size-small grow" name="appInit" onclick="startApp()"><div class="contents">Load the Previous Picture</div></button> </div> </div> -->
                   </div>
                 </div>
                 <div id="modal-file-drop" class="upload-drop-modal hidden">
@@ -73,24 +77,237 @@
                     <div class="title">
                       Invalid File Type
                     </div>
-                    <div class="instructions">
-                      Uh oh... The image doesn't seem<br>
-                      like an image to me.
-                    </div>
+                    <div class="instructions" id="invalidImageReason"></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="layers flex-vertical flex-spacer hidden layer-animate fadescale-out" data-frame="steps-app">
           <!-- <div class="layers flex-vertical flex-spacer" data-frame="steps-app"> -->
+          <div class="layers flex-vertical flex-spacer hidden layer-animate fadescale-out" data-frame="steps-app">
             <div class="layer">
               <div class="ui-standard-sidebar-view">
                 <div class="content-region">
-                  <img src="../assets/img/home_file_upload.png" alt="Cropper" id="cropper-img">
+                  <img alt="" id="cropper-img" class="">
+                  <div class="content-transition-wrap hidden" id="watermark-verifier-page">
+                    <div class="content-region-scroller">
+                      <div class="content-column default">
+                        <div class="watermark-verifier">
+                          <h2 class="size-uppercase color-default title-flex height-20 size-16 margin-bottom-20" id="verifier-title"></h2>
+                          <div class="description margin-bottom-20 mode-default">
+                            Verify that the watermark added below is correct. You can change the settings at any time in the
+                            <code>Controls</code> section of the sidebar.
+                          </div>
+                          <div class="flex-vertical">
+                            <div class="flex flex-direction-column flex-justify-center flex-align-center flex-no-wrap pane-wrapper margin-bottom-20"
+                              style="flex: 1 1 auto">
+                              <div class="pane-image margin-bottom-40">
+                                <div class="spinner hidden" style="flex: 1 1 auto;" id="watermark-spinner">
+                                  <div class="double-bounce1"></div>
+                                  <div class="double-bounce2"></div>
+                                </div>
+                                <img alt="" class="hidden" id="verifier-img">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="content-transition-wrap hidden" id="final-save-page">
+                    <div class="content-region-scroller">
+                      <div class="content-column default">
+                        
+                        <div class="final-save">
+                          <h2 class="size-uppercase color-default title-flex height-20 size-16 margin-bottom-20" id="verifier-title">Save location</h2>
+                          <div class="description margin-bottom-20 mode-default">
+                            You can now name your picture. The name will be used to create the wallpaper files. They will be stored in a folder created
+                            in the directory you will choose by clicking on the
+                            <code>Render and Quit</code> button.
+                          </div>
+                          <div class="flex-vertical">
+                            <div class="flex flex-direction-column flex-justify-between flex-align-center flex-no-wrap pane-wrapper margin-bottom-20"
+                              style="flex: 1 1 auto">
+                              <div class="pane-image margin-bottom-40" style="width: 100%; flex: 1 1 auto;">
+                                <div class="text-area">
+                                  <div class="description margin-bottom-8 mode-default color-danger hidden" id="final-save-danger-text"></div>
+                                  <div class="inner flex">
+                                    <input type="text" id="final-save-name-input" placeholder="Wallpaper Name">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="final-save-progress">
+                          <h2 class="size-uppercase color-default title-flex height-20 size-16 margin-bottom-20" id="verifier-title">Save progress</h2>
+                          <div class="description margin-bottom-20 mode-default" id="final-save-progress-label">
+                            Wating for input
+                          </div>
+                          <div class="flex-vertical">
+                            <div class="flex flex-direction-column flex-justify-between flex-align-center flex-no-wrap pane-wrapper margin-bottom-20"
+                              style="flex: 1 1 auto">
+                              <div class="pane-image margin-bottom-40" style="width: 100%; flex: 1 1 auto;">
+                                <div class="pane-image margin-bottom-40" style="width: 100%; flex: 1 1 auto;">
+                                  <div class="progress-bar">
+                                    <span style="width: 0%;" id="final-save-progress-bar-percent"></span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="sidebar-region">
-                  
+                  <div class="scroller-wrap scroller-themed ghost-hairline scroller-fade">
+                    <div class="scroller sidebar-region-scroller">
+                      <div class="sidebar">
+                        <div class="flex-side">
+
+                          <div class="header">
+                            Steps
+                          </div>
+                          <div class="item-selected item selected" id="sidebar-homepage">
+                            Homepage
+                          </div>
+                          <div class="item-default item not-selected" id="sidebar-desktop-cropper">
+                            Desktop Cropper
+                          </div>
+                          <div class="item-default item not-selected" id="sidebar-mobile-cropper">
+                            Mobile Cropper
+                          </div>
+                          <div class="item-default item not-selected" id="sidebar-watermark-verifier">
+                            Watermark Verifier
+                          </div>
+                          <div class="item-default item not-selected" id="sidebar-final-save">
+                            Save Location
+                          </div>
+                          
+                          <div class="separator margin-top-8 margin-bottom-8"></div>
+                          <div class="header">
+                            Controls
+                          </div>
+                          <div id="default-pane-settings" class="">
+                            <div class="item-default item not-selected disabled">
+                              None
+                            </div>
+                          </div>
+                          <div id="desktop-cropper-pane-settings" class="hidden">
+                            <div class="item-default item not-selected enabled success" id="desktop-cropper-pane-settings-saveButton">
+                              Save and Continue
+                            </div>
+                            <div class="item-default item not-selected enabled danger" id="desktop-cropper-pane-settings-quitButton">
+                              Quit
+                            </div>
+                          </div>
+                          <div id="mobile-cropper-pane-settings" class="hidden">
+                            <div class="item-default item not-selected enabled success" id="mobile-cropper-pane-settings-saveButton">
+                              Save and Continue
+                            </div>
+                            <div class="item-default item not-selected enabled danger" id="mobile-cropper-pane-settings-quitButton">
+                              Quit
+                            </div>
+                          </div>
+                          <div id="watermark-verifier-pane-settings" class="hidden">
+                            <div class="header">
+                              &nbsp;&nbsp;&nbsp;&nbsp;Watermark Position
+                            </div>
+                            <div class="item-default item not-selected enabled watermark-verifier-position" id="watermark-verifier-position-northwest" data-watermark-position-value="northwest">
+                              Northwest
+                            </div>
+                            <div class="item-default item not-selected enabled watermark-verifier-position" id="watermark-verifier-position-northeast" data-watermark-position-value="northeast">
+                              Northeast
+                            </div>
+                            <div class="item-selected item selected enabled watermark-verifier-position" id="watermark-verifier-position-southeast" data-watermark-position-value="southeast">
+                              Southeast
+                            </div>
+                            <div class="item-default item not-selected enabled watermark-verifier-position" id="watermark-verifier-position-southwest" data-watermark-position-value="southwest">
+                              Southwest
+                            </div>
+
+                            <div class="header">
+                              &nbsp;&nbsp;&nbsp;&nbsp;Watermark Ratio
+                            </div>
+                            <div class="item-default item not-selected enabled danger watermark-verifier-ratio" id="watermark-verifier-ratio-1" data-watermark-ratio-value="1">
+                              1/1
+                            </div>
+                            <div class="item-default item not-selected enabled watermark-verifier-ratio" id="watermark-verifier-ratio-2" data-watermark-ratio-value="2">
+                              1/2
+                            </div>
+                            <div class="item-default item not-selected enabled watermark-verifier-ratio" id="watermark-verifier-ratio-3" data-watermark-ratio-value="3">
+                              1/3
+                            </div>
+                            <div class="item-default item not-selected enabled watermark-verifier-ratio" id="watermark-verifier-ratio-4" data-watermark-ratio-value="4">
+                              1/4
+                            </div>
+                            <div class="item-default item not-selected enabled watermark-verifier-ratio" id="watermark-verifier-ratio-5" data-watermark-ratio-value="5">
+                              1/5
+                            </div>
+                            <div class="item-default item not-selected enabled watermark-verifier-ratio" id="watermark-verifier-ratio-6" data-watermark-ratio-value="6">
+                              1/6
+                            </div>
+                            <div class="item-default item not-selected enabled watermark-verifier-ratio" id="watermark-verifier-ratio-7" data-watermark-ratio-value="7">
+                              1/7
+                            </div>
+
+                            <div class="header">
+                              &nbsp;&nbsp;&nbsp;&nbsp;Watermark Color
+                            </div>
+                            <div class="item-selected item selected enabled watermark-verifier-color" id="watermark-verifier-color-white" data-watermark-color-value="white">
+                              White
+                            </div>
+                            <div class="item-default item not-selected enabled watermark-verifier-color" id="watermark-verifier-color-black" data-watermark-color-value="black">
+                              Black
+                            </div>
+                            <div class="item-default item not-selected enabled watermark-verifier-color" id="watermark-verifier-color-blue" data-watermark-color-value="blue">
+                              Blue
+                            </div>
+                            <div class="item-default item not-selected enabled watermark-verifier-color" id="watermark-verifier-color-orange" data-watermark-color-value="orange">
+                              Orange
+                            </div>
+                            <div class="item-default item not-selected enabled watermark-verifier-color" id="watermark-verifier-color-red" data-watermark-color-value="red">
+                              Red
+                            </div>
+                            <div class="item-default item not-selected enabled watermark-verifier-color" id="watermark-verifier-color-pink" data-watermark-color-value="pink">
+                              Pink
+                            </div>
+                            
+                            <div class="separator margin-top-8 margin-bottom-8"></div>
+                            <div class="item-default item not-selected enabled success" id="watermark-verifier-pane-settings-saveButton">
+                              Save and Continue
+                            </div>
+                            <div class="item-default item not-selected enabled danger" id="watermark-verifier-pane-settings-quitButton">
+                              Quit
+                            </div>
+                          </div>
+                          <div id="final-save-pane-settings" class="hidden">
+                            <div class="item-default item not-selected enabled success" id="final-save-pane-settings-saveButton">
+                              Render and Quit
+                            </div>
+                            <div class="item-default item not-selected enabled danger" id="final-save-pane-settings-quitButton">
+                              Quit
+                            </div>
+                          </div>
+
+                          <!-- <div class="separator margin-top-8 margin-bottom-8"></div>
+                          <div class="header">
+                            Settings (WIP)
+                          </div>
+                          <div class="item-default item not-selected disabled">
+                            User Settings
+                          </div>
+                          <div class="item-default item not-selected disabled">
+                            App Settings
+                          </div> -->
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -100,14 +317,15 @@
     </div>
     <!-- <script src="../assets/js/process.js" charset="utf-8"></script> -->
     <script src="../assets/js/directives/scriptModuleStart.js" charset="utf-8"></script>
-      <script src="../vendor/jquery/jquery.js" charset="utf-8"></script>
-      <script src="../vendor/croppie/croppie.js" charset="utf-8"></script>
+    <script src="../vendor/jquery/jquery.js" charset="utf-8"></script>
+    <script src="../vendor/croppie/croppie.js" charset="utf-8"></script>
     <script src="../assets/js/directives/scriptModuleEnd.js" charset="utf-8"></script>
 
     <script src="../assets/js/functions.js" charset="utf-8"></script>
-    <script src="../assets/js/titlebar.js" charset="utf-8"></script>
     <!-- <script src="../assets/js/image.js" charset="utf-8"></script> -->
+    <script src="../assets/js/buttons.js" charset="utf-8"></script>
     <script src="../assets/js/main.js" charset="utf-8"></script>
     <script src="../assets/js/dragndrop.js" charset="utf-8"></script>
+    <script src="../assets/js/titlebar.js" charset="utf-8"></script>
   </body>
 </html>

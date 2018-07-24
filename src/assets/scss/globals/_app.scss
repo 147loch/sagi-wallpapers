@@ -34,6 +34,19 @@ body {
   font-size: 26px;
   line-height: 32px;
   font-family: 'Montserrat', 'Roboto', 'Open Sans', sans-serif;
+
+  &-flex {
+    -ms-flex: 1;
+    -webkit-box-flex: 1;
+    cursor: default;
+    flex: 1;
+  }
+}
+
+.height {
+  &-20 {
+    line-height: 20px;
+  }
 }
 
 .subtitle {
@@ -48,6 +61,12 @@ body {
     font-size: 15px;
     font-family: 'Open Sans', 'Roboto', sans-serif;
   }
+  &-uppercase {
+    text-transform: uppercase;
+  }
+  &-16 {
+    font-size: 16px;
+  }
 }
 
 .weight {
@@ -58,11 +77,37 @@ body {
   &-normal {
     font-weight: 400;
   }
+
+  &-semi-bold {
+    font-weight: 600;
+  }
+}
+
+
+.description {
+  color: #72767d;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
 }
 
 .color {
   &-white {
     color: $text-color-title;
+  }
+
+  &-danger {
+    color: rgb(240, 71, 71);
+  }
+
+  &-default {
+    color: #f6f6f7;
+  }
+}
+
+.mode {
+  &-default {
+    cursor: default;
   }
 }
 
@@ -71,7 +116,35 @@ body {
     &-8 {
       margin-bottom: 8px;
     }
+    &-20 {
+      margin-bottom: 20px;
+    }
+    &-40 {
+      margin-bottom: 40px;
+    }
   }
+
+  &-top {
+    &-8 {
+      margin-top: 8px;
+    }
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+code {
+  font-family: "Lucida Console", monospace;
+  line-height: 1.25em;
+  border: 1px solid rgba(0,0,0,.3);
+  border-radius: 2px;
+  color: #eb5a46;
+  padding: 3px 3px;
+  margin: -1px 2px;
+  font-size: 1em;
+  background-color: rgba(0,0,0,.1);
 }
 
 hr {
@@ -135,6 +208,21 @@ hr {
     min-width: 60px;
     width: 60px;
   }
+}
 
+.progress-bar {
+  background-color: hsla(218,5%,47%,.3);
+  height: 25px;
+  padding: 5px;
+  width: 100%;
+  margin: -10px 0 0 0;         
+  border-radius: 5px;
 
+  span {
+    display: inline-block;
+    height: 100%;
+    border-radius: 3px;
+    transition: width .4s ease-in-out;    
+    background-color: #7289da;
+  }
 }

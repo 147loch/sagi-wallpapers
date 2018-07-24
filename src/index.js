@@ -1,6 +1,9 @@
 // 'use strict';
 
-const { app, BrowserWindow } = require('electron');
+const {
+  app,
+  BrowserWindow
+} = require('electron');
 const path = require('path');
 
 require('electron-reload')(__dirname);
@@ -19,10 +22,10 @@ let mainWindow;
 const createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1281,
-    height: 800,
-    minWidth: 1281,
-    minHeight: 800,
+    width: 854,
+    height: 533,
+    minWidth: 854,
+    minHeight: 533,
     frame: false,
     // titleBarStyle: 'hidden',
     backgroundColor: '#202225',
@@ -33,7 +36,9 @@ const createWindow = () => {
   mainWindow.on('ready-to-show', () => {
     mainWindow.focus();
     mainWindow.show();
-    mainWindow.webContents.openDevTools({ mode: 'undocked' });
+    mainWindow.webContents.openDevTools({
+      mode: 'undocked'
+    });
   });
 
   // and load the index.html of the app.
