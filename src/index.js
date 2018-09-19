@@ -2,11 +2,12 @@
 
 const {
   app,
-  BrowserWindow
+  BrowserWindow,
+  globalShortcut
 } = require('electron');
 const path = require('path');
 
-require('electron-reload')(__dirname);
+// require('electron-reload')(__dirname);
 
 // const isDev = require('electron-is-dev');
 
@@ -20,6 +21,12 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 let mainWindow;
 
 const createWindow = () => {
+  globalShortcut.register('CommandOrControl+I', () => {
+    mainWindow.webContents.openDevTools({
+      mode: 'undocked'
+    });
+  })
+
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 854,
@@ -36,9 +43,6 @@ const createWindow = () => {
   mainWindow.on('ready-to-show', () => {
     mainWindow.focus();
     mainWindow.show();
-    mainWindow.webContents.openDevTools({
-      mode: 'undocked'
-    });
   });
 
   // and load the index.html of the app.

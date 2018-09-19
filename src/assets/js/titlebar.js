@@ -5,8 +5,6 @@
   const init = () => {
     $('.titlebar-win-button-close').click((e) => {
       const window = BrowserWindow.getFocusedWindow();
-      localStorage.clear();
-      storage.deleteAll();
       window.close()
     });
     $('.titlebar-win-button-min').click((e) => {
